@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ayushmaan Dubey · Portfolio</title>
+<meta name="description" content="Ayushmaan Dubey, Computer Science student at Texas A&M, interested in software engineering, AI/ML and security.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF4EA; --sand:#F3E4CF; --card:#FFFCF7; --line:#E6D5BE;
+    --clay:#B8603F; --clay-dark:#9C4E31; --amber:#E9A35F;
+    --espresso:#2A1D16; --espresso-2:#3A2A20; --brown:#3B2A20; --muted:#7A6556; --muted-dark:#CDB9A5;
+    --radius:16px; --shadow:0 6px 24px rgba(60,35,20,.09);
+  }
+  *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',system-ui,sans-serif;background:var(--cream);color:var(--brown);line-height:1.65;overflow-x:hidden}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.12;letter-spacing:-.01em}
+  a{color:var(--clay-dark)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+  section{padding:92px 0}
+  .eyebrow{display:block;font-weight:700;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);margin-bottom:12px}
+  h2{font-size:clamp(2rem,4.2vw,2.8rem);margin-bottom:30px}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:10;background:rgba(42,29,22,.92);backdrop-filter:blur(8px)}
+  nav .wrap{max-width:none;padding:0 32px;display:flex;justify-content:space-between;align-items:center;height:60px}
+  .logo{font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;text-decoration:none;color:var(--cream)}
+  nav ul{display:flex;gap:24px;list-style:none;padding:0}
+  nav ul a{text-decoration:none;font-weight:500;font-size:.92rem;color:var(--muted-dark)}
+  nav ul a:hover{color:var(--amber)}
+
+  /* hero */
+  .hero{position:relative;background:var(--espresso);color:var(--cream);padding:96px 0 104px;overflow:hidden;
+    background-image:radial-gradient(ellipse 60% 70% at 85% 20%,rgba(233,163,95,.28),transparent 60%),radial-gradient(ellipse 50% 60% at 0% 100%,rgba(184,96,63,.28),transparent 60%)}
+  .hero .wrap{display:grid;grid-template-columns:1.6fr 1fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.4rem);margin-bottom:22px}
+  .hero h1 em{color:var(--amber);font-style:italic;font-weight:500}
+  .hero .tagline{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.4;color:var(--cream);max-width:26em;margin-bottom:32px}
+  .hero .tagline span{color:var(--amber);font-style:normal;margin:0 .35em}
+  .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 26px;border-radius:99px;font:inherit;font-weight:700;text-decoration:none;border:2px solid var(--amber);cursor:pointer;transition:transform .2s,background .2s,color .2s}
+  .btn.primary{background:var(--amber);color:var(--espresso)}
+  .btn.primary:hover{transform:translateY(-2px);background:#F0B374;border-color:#F0B374}
+  .btn.ghost{color:var(--cream);background:transparent;border-color:rgba(255,255,255,.35)}
+  .btn.ghost:hover{border-color:var(--amber);color:var(--amber)}
+  .portrait{aspect-ratio:4/5;border-radius:200px 200px 24px 24px;background:linear-gradient(160deg,var(--espresso-2),#4A3426);border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;font-family:'Fraunces',serif;font-size:4.5rem;color:var(--amber);overflow:hidden;max-width:290px;justify-self:center;width:100%;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+  .portrait img{width:100%;height:100%;object-fit:cover}
+
+  /* stats */
+  .stats{background:var(--sand);border-bottom:1px solid var(--line);padding:0}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:34px 18px;text-align:center;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat b{display:block;font-family:'Fraunces',serif;font-size:clamp(1.9rem,4vw,2.7rem);color:var(--clay);line-height:1}
+  .stat span{display:block;margin-top:8px;font-size:.86rem;color:var(--muted)}
+
+  /* about */
+  .about .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
+  .about p{margin-bottom:16px;color:#5a4636;font-size:1.04rem}
+  .facts{display:grid;gap:12px}
+  .fact{background:var(--card);padding:18px 22px;border-radius:var(--radius);border:1px solid var(--line);border-left:4px solid var(--amber)}
+  .fact b{display:block;font-family:'Fraunces',serif;font-size:1.08rem}
+  .fact span{color:var(--muted);font-size:.92rem}
+
+  /* projects: numbered editorial rows */
+  .band{background:var(--sand)}
+  .proj{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:34px 0;border-top:1px solid var(--line)}
+  .proj:last-child{border-bottom:1px solid var(--line)}
+  .num{font-family:'Fraunces',serif;font-size:2.6rem;color:var(--amber);line-height:1;font-style:italic}
+  .proj h3{font-size:1.55rem;margin-bottom:8px;transition:color .2s}
+  .proj:hover h3{color:var(--clay)}
+  .proj .sum{color:var(--muted);margin-bottom:12px;max-width:44em}
+  .proj ul{padding-left:18px;color:#5a4636;font-size:.95rem;margin-bottom:14px;max-width:46em}
+  .proj li{margin-bottom:6px}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+  .tag{background:var(--card);border:1px solid var(--line);padding:3px 12px;border-radius:99px;font-size:.78rem;font-weight:500}
+  .proj a.more{font-weight:700;text-decoration:none}
+  .proj a.more:hover{text-decoration:underline}
+
+  /* skills + experience */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .skill-group{margin-bottom:20px}
+  .skill-group h3{font-size:.8rem;margin-bottom:9px;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:var(--card);border:1px solid var(--line);padding:6px 14px;border-radius:99px;font-weight:500;font-size:.9rem;transition:border-color .2s,transform .2s}
+  .chip:hover{border-color:var(--clay);transform:translateY(-2px)}
+  .timeline{border-left:2px solid var(--line);padding-left:24px;display:grid;gap:26px}
+  .timeline div{position:relative}
+  .timeline div::before{content:"";position:absolute;left:-31px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--clay);border:3px solid var(--cream)}
+  .timeline small{color:var(--clay-dark);font-weight:700}
+  .timeline h3{font-size:1.1rem;margin:2px 0}
+  .timeline p{color:var(--muted);font-size:.94rem}
+
+  /* contact */
+  .contact{background:var(--espresso);color:var(--cream);background-image:radial-gradient(ellipse 50% 80% at 100% 0%,rgba(233,163,95,.22),transparent 60%)}
+  .contact .eyebrow{color:var(--amber)}
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .contact h2{font-size:clamp(2rem,4.5vw,3.2rem)}
+  .contact p{color:var(--muted-dark);margin-bottom:22px}
+  .links{display:flex;gap:20px;flex-wrap:wrap}
+  .links a{font-weight:700;color:var(--amber)}
+  form{display:grid;gap:12px}
+  label{font-size:.84rem;font-weight:500;color:var(--muted-dark)}
+  input,textarea{width:100%;padding:12px 15px;border-radius:12px;border:1px solid rgba(255,255,255,.18);font:inherit;background:rgba(255,255,255,.06);color:var(--cream)}
+  input:focus,textarea:focus,.btn:focus-visible,a:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+  textarea{min-height:110px;resize:vertical}
+  form .btn{justify-self:start}
+  footer{background:var(--espresso);text-align:center;padding:26px 20px 40px;color:var(--muted-dark);font-size:.88rem;border-top:1px solid rgba(255,255,255,.08)}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+
+  @media (max-width:760px){
+    nav ul{gap:14px}
+    .hero .wrap,.about .wrap,.two,.contact .wrap{grid-template-columns:1fr}
+    .portrait{max-width:200px;order:-1;justify-self:start}
+    .stats .wrap{grid-template-columns:1fr 1fr}
+    .stat:nth-child(2){border-right:0} .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .proj{grid-template-columns:1fr;gap:6px}
+    section{padding:64px 0}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">Ayushmaan Dubey</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1><em>Howdy!</em> I'm Ayushmaan.</h1>
+      <p class="tagline">CS @ Texas A&amp;M University <span>|</span> Prev AI Engineering Intern @ Gajkesri WebTech</p>
+      <div class="btns">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn ghost" href="#projects">See my work</a>
+      </div>
+    </div>
+    <div class="portrait"><img src="me.jpg" alt="Photo of Ayushmaan Dubey" style="object-position:50% 30%"></div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>1,500+</b><span>members managed by my CRM</span></div>
+    <div class="stat"><b>2–8</b><span>patients served weekly by the AI stethoscope</span></div>
+    <div class="stat"><b>2</b><span>first-author journal publications</span></div>
+    <div class="stat"><b>5+</b><span>agentic AI pipelines built for social media automation</span></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">About me</span>
+      <p>Hello! I'm Ayushmaan, and I study Computer Science at Texas A&amp;M University. I love learning all things software, but I'm especially interested in the intersection of applied AI/ML, security and compliance, and in building systems that are powerful, secure and cost-effective.</p>
+      <p>Whether it's any questions, an open-source collaboration, or chatting about the latest tech news, please reach out because I love meeting new people! Please don't hesitate to email me at <a href="mailto:ayushmaandubey46@gmail.com">ayushmaandubey46@gmail.com</a>.</p>
+    </div>
+    <div class="facts reveal">
+      <div class="fact"><b>Texas A&amp;M University</b><span>B.S. Computer Science · Aug 2025 – May 2029</span></div>
+      <div class="fact"><b>Interests</b><span>Software engineering · AI/ML · Security · GRC</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="projects">
+  <div class="wrap">
+    <h2 class="reveal">Projects</h2>
+    <article class="proj reveal">
+      <div class="num">01</div>
+      <div>
+        <h3>Temple Management CRM</h3>
+        <p class="sum">A low-cost full-stack CRM that replaced a temple's manual record-keeping and now manages 1,500+ active members.</p>
+        <ul>
+          <li>Sole technical owner; gathered requirements and iterated through live user testing</li>
+          <li>Role-based access control, least privilege, audit logging and brute-force protection</li>
+          <li>Unified relational schema with bulk Excel import/export and live search</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">PostgreSQL</span><span class="tag">Security</span></div>
+        <a class="more" href="https://github.com/Ayushmaan-Dubey/IskonCRM" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+    </article>
+
+    <article class="proj reveal">
+      <div class="num">02</div>
+      <div>
+        <h3>AI Stethoscope &amp; RAG Chatbot</h3>
+        <p class="sum">Work from my AI engineering internship at Gajkesri WebTech.</p>
+        <ul>
+          <li>Built a heart-sound classifier for an AI stethoscope using YAMNet embeddings, reaching 95.0% validation accuracy; used internally with a vibe-coded UI, serving 2–8 patients weekly</li>
+          <li>Engineered an n8n RAG customer-support chatbot delivering automated, context-aware responses and cutting manual response time by ~70%</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">RAG</span><span class="tag">n8n</span></div>
+        <a class="more" href="https://github.com/Ayushmaan-Dubey/AiStethoscope" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+    </article>
+
+    <article class="proj reveal">
+      <div class="num">03</div>
+      <div>
+        <h3>Published Research</h3>
+        <p class="sum">Two first-author papers in peer-reviewed journals.</p>
+        <ul>
+          <li><b>Alopecia diagnosis:</b> two CNNs with 97.94% and 96.71% validation accuracy, published in Harvard's Journal of Emerging Investigators · <a href="https://doi.org/10.59720/24-004" target="_blank" rel="noopener">Read the paper →</a></li>
+          <li><b>Remote patient monitoring:</b> featured in Newsweek, with 5 CrossRef citations, an Altmetric score of 24 and the 2nd-highest readership (5k+ views) among 2023 publications in the Journal of Market Access and Health Policy · <a href="https://doi.org/10.1080/20016689.2023.2205618" target="_blank" rel="noopener">Read the paper →</a></li>
+        </ul>
+        <div class="tags"><span class="tag">MATLAB</span><span class="tag">Deep learning</span><span class="tag">Statistics</span></div>
+      </div>
+    </article>
+    <article class="proj reveal">
+      <div class="num">04</div>
+      <div>
+        <h3>AI/ML Projects</h3>
+        <p class="sum">Agentic and retrieval-based AI systems from my GitHub.</p>
+        <ul>
+          <li><b>Local-LLM Web Data Extraction Platform:</b> Selenium and BeautifulSoup scraper with on-device Llama 3 (Ollama) extraction and a Streamlit UI</li>
+          <li><b>Real-Time Voice Agent with Native macOS Tooling:</b> LiveKit Agents voice assistant with AppleScript tools for Reminders, Contacts and iMessage</li>
+          <li><b>Autonomous LangChain Research Agent:</b> web-search and file-saving tools with structured output validated via Pydantic</li>
+          <li><b>Retrieval-Augmented PDF Intelligence Service:</b> RAG analyzer built on LlamaIndex, Qdrant, Claude, FastAPI/Inngest and Streamlit</li>
+          <li><b>LangGraph Multi-Agent Conversational Router:</b> chatbot that routes between a therapist agent and a logical agent</li>
+        </ul>
+        <div class="tags"><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">LlamaIndex</span><span class="tag">RAG</span><span class="tag">Ollama</span><span class="tag">LiveKit</span></div>
+        <a class="more" href="https://github.com/Ayushmaan-Dubey?tab=repositories" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap two">
+    <div class="reveal">
+      <span class="eyebrow">Skills</span>
+      <h2>My toolbox</h2>
+      <div class="skill-group"><h3>Languages</h3><div class="chips">
+        <span class="chip">Python</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">C++</span><span class="chip">C#</span><span class="chip">SQL</span><span class="chip">MATLAB</span><span class="chip">HTML/CSS</span><span class="chip">AppleScript</span><span class="chip">Bash</span></div></div>
+      <div class="skill-group"><h3>AI/ML</h3><div class="chips">
+        <span class="chip">n8n</span><span class="chip">TensorFlow</span><span class="chip">YAMNet</span><span class="chip">scikit-learn</span><span class="chip">NumPy</span><span class="chip">pandas</span><span class="chip">LiveKit</span><span class="chip">RAG</span><span class="chip">Vector search</span><span class="chip">Hugging Face embeddings</span><span class="chip">Silero VAD</span><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">LlamaIndex</span><span class="chip">Ollama</span><span class="chip">OpenAI &amp; Claude APIs</span></div></div>
+      <div class="skill-group"><h3>Backend and architecture</h3><div class="chips">
+        <span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">Uvicorn</span><span class="chip">Inngest</span><span class="chip">asyncio</span><span class="chip">REST APIs</span><span class="chip">Streamlit</span><span class="chip">SQLAlchemy</span><span class="chip">Relational data modeling</span><span class="chip">Schema migrations</span></div></div>
+      <div class="skill-group"><h3>Data and cloud</h3><div class="chips">
+        <span class="chip">PostgreSQL</span><span class="chip">Qdrant (vector DB)</span><span class="chip">MongoDB</span><span class="chip">Supabase</span><span class="chip">Google Cloud Platform</span><span class="chip">Render</span></div></div>
+      <div class="skill-group"><h3>Security</h3><div class="chips">
+        <span class="chip">Role-based access control (RBAC)</span><span class="chip">Least privilege</span><span class="chip">Brute-force protection</span><span class="chip">Security audit logging</span><span class="chip">HTTPS</span><span class="chip">Content Security Policy (CSP)</span><span class="chip">OWASP-aligned secure design</span></div></div>
+      <div class="skill-group"><h3>Developer tools</h3><div class="chips">
+        <span class="chip">PyCharm</span><span class="chip">VS Code</span><span class="chip">Git/GitHub</span><span class="chip">uv</span><span class="chip">Selenium</span><span class="chip">BeautifulSoup</span><span class="chip">Android Studio</span><span class="chip">Docker</span><span class="chip">Claude Code</span></div></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Experience</span>
+      <h2>Where I've been</h2>
+      <div class="timeline">
+        <div><small>May – June 2026</small><h3>AI Engineer Intern · Gajkesri WebTech</h3><p>Rajasthan, India</p></div>
+        <div><small>Aug 2025 – May 2029</small><h3>B.S. Computer Science · Texas A&amp;M</h3><p>College Station, Texas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Contact</span>
+      <h2>Let's talk!</h2>
+      <div class="links">
+        <a href="mailto:ayushmaandubey46@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/ayushmaan-dubey-965172377" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <!-- No backend: submitting opens the visitor's email app with the message pre-filled. -->
+    <form id="contact-form" class="reveal">
+      <div><label for="name">Your name</label><input id="name" required maxlength="80" autocomplete="name"></div>
+      <div><label for="msg">Message</label><textarea id="msg" required maxlength="1500"></textarea></div>
+      <button class="btn primary" type="submit">Send message</button>
+    </form>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Ayushmaan Dubey</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.getElementById('contact-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const msg = document.getElementById('msg').value.trim();
+    const subject = encodeURIComponent('Internship opportunity');
+    const body = encodeURIComponent(msg + '\n\n— ' + name);
+    location.href = 'mailto:ayushmaandubey46@gmail.com?subject=' + subject + '&body=' + body;
+  });
+
+  const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
